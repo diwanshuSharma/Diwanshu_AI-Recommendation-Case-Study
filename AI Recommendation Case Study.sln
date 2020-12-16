@@ -19,7 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIRecommendationApp.Pearson
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIRecommendationApp.UnitTest", "AIRecommendationApp.UnitTest\AIRecommendationApp.UnitTest.csproj", "{3181ADEF-D419-442E-B015-52F85AAD911D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Books", "Books\Books.csproj", "{1F6DB2B7-7A7D-47B1-8CF1-17ADB6EC0EEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookUserRatingLib", "Books\BookUserRatingLib.csproj", "{1F6DB2B7-7A7D-47B1-8CF1-17ADB6EC0EEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLoadingOfBook", "DataLoadingOfBook\DataLoadingOfBook.csproj", "{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1F6DB2B7-7A7D-47B1-8CF1-17ADB6EC0EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6DB2B7-7A7D-47B1-8CF1-17ADB6EC0EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6DB2B7-7A7D-47B1-8CF1-17ADB6EC0EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{A9565045-6F23-4A66-AEC2-5F45DEFE6374} = {A216432D-AF91-423E-9172-4319506296C0}
 		{3181ADEF-D419-442E-B015-52F85AAD911D} = {6AB6534A-E487-488C-971F-164D13F6172D}
 		{1F6DB2B7-7A7D-47B1-8CF1-17ADB6EC0EEA} = {558C0017-1910-4033-8784-796F25115D63}
+		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4} = {D001A4E4-13C4-43DD-B2B6-A327C0B31DF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F53199F7-BDC2-462E-AB9D-795214B97C2E}

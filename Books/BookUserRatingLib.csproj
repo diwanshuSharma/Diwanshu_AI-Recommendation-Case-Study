@@ -41,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BXBook.cs" />
-    <Compile Include="BXUser.cs" />
-    <Compile Include="BXBookRating.cs" />
+    <Compile Include="BookDetails.cs" />
+    <Compile Include="Book.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="BookUserRating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

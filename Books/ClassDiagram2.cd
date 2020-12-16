@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BookUserRatingLib.Book">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAADAAAAAAAAAAAQgAAAAIAAIAAAAA=</HashCode>
+      <FileName>Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookUserRatingLib.BookDetails">
+    <Position X="5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAABAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BookDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookUserRatingLib.BookUserRating">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>BookUserRating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookUserRatingLib.User">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAEAAAAgAAAAAAgACAAAABAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

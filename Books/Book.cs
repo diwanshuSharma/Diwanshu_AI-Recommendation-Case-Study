@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books
+namespace BookUserRatingLib
 {
-    public class BXBook
+    public class Book
     {
         public string ISBN { get; set; }
         public string BookTitle { get; set; }
@@ -16,6 +16,8 @@ namespace Books
         public string ImageURLS { get; set; }
         public string ImageURLM { get; set; }
         public string ImageURLL { get; set; }
+
+        List<BookUserRating> BookRatings { get; set; } = new List<BookUserRating>();
     }
 }
 
