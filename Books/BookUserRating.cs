@@ -11,8 +11,8 @@ namespace BookUserRatingLib
         /*public int UserID { get; set; }
         public string ISBN { get; set; }*/
         public int Rating { get; set; }
-        public User UserID { get; set; } = new User();
-        public Book ISBN { get; set; } = new Book();
+        public User User { get; set; } = new User();
+        public Book Book { get; set; } = new Book();
 
 
     }

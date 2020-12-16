@@ -60,8 +60,8 @@ namespace DataLoadingOfBook
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(';');
-                    bookUserRating.UserID.UserID = int.Parse(values[0]);
-                    bookUserRating.ISBN.ISBN = values[1];
+                    bookUserRating.User.UserID = int.Parse(values[0]);
+                    bookUserRating.Book.ISBN = values[1];
                     bookUserRating.Rating = int.Parse(values[2]);
                 }
                 bookDetails.BookUserRatings.Add(bookUserRating);

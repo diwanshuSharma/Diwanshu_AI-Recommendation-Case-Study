@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BookDetails.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="Preferance.cs" />
     <Compile Include="User.cs" />
     <Compile Include="BookUserRating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookUserRatingLib", "Books\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLoadingOfBook", "DataLoadingOfBook\DataLoadingOfBook.csproj", "{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIRecommendationApp", "AIRecommendationApp\AIRecommendationApp.csproj", "{77713173-B33E-40B4-A114-630A2676CE1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77713173-B33E-40B4-A114-630A2676CE1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77713173-B33E-40B4-A114-630A2676CE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77713173-B33E-40B4-A114-630A2676CE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77713173-B33E-40B4-A114-630A2676CE1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{3181ADEF-D419-442E-B015-52F85AAD911D} = {6AB6534A-E487-488C-971F-164D13F6172D}
 		{1F6DB2B7-7A7D-47B1-8CF1-17ADB6EC0EEA} = {558C0017-1910-4033-8784-796F25115D63}
 		{5CD05A67-5BDC-4E31-AE83-D8EE334857C4} = {D001A4E4-13C4-43DD-B2B6-A327C0B31DF4}
+		{77713173-B33E-40B4-A114-630A2676CE1C} = {7E4B15BB-88FB-45E7-BD0A-B56F36B39897}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F53199F7-BDC2-462E-AB9D-795214B97C2E}

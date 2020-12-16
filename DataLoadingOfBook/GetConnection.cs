@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace DataLoadingOfBook
 {
-    class GetConnection
+    public class GetConnection
     {
         public static IDbConnection MadeConnection()
         {
-            ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings["abc"];
+            ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings["default"];
             string provider = connectionStringSettings.ProviderName;
             DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
             IDbConnection conn = factory.CreateConnection();
-            string confstring = ConfigurationManager.ConnectionStrings["abc"].ConnectionString;
+            string confstring = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
             conn.ConnectionString = confstring;
 
             return conn;

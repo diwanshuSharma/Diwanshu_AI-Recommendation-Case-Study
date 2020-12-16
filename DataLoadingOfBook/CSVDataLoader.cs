@@ -14,74 +14,134 @@ namespace DataLoadingOfBook
         {
             BookDetails bookDetails = new BookDetails();
 
-            LoadBooks(bookDetails);
-            LoadBookUserRating(bookDetails);
-            LoadUser(bookDetails);
+            bookDetails.Books = LoadBooks();
+            bookDetails.BookUserRatings = LoadBookUserRating();
+            bookDetails.User = LoadUser();
 
             return bookDetails;
         }
 
-        private void LoadUser(BookDetails bookDetails)
+        private List<User> LoadUser()
         {
             User user = null;
 
-            using (var reader = new StreamReader(@"C:\Users\kitra\source\repos\Kartik-Kumar\AI-Recommendation-Case-Study\Data\BX-Users.csv"))
+            char[] ss = new char[2];
+            ss[0] = '\\';
+            ss[1] = '"';
+
+            List<User> users = new List<User>();
+
+            using (var reader = new StreamReader(@"BXUsers.csv"))
             {
                 user = new User();
-                while (!reader.EndOfStream)
+                reader.ReadLine();
+
+                int count = 0;
+
+                while (!reader.EndOfStream && count < 3000)
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(';');
-                    user.UserID = int.Parse(values[0]);
+                    user.UserID = int.Parse(values[0].ToString().Trim(ss));
                     var address = values[1].Split(',');
-                    user.City = address[0];
-                    user.State = address[1];
-                    user.Country = address[2];
-                    user.Age = int.Parse(values[2]);
+                    user.City = address[0].ToString().Trim(ss);
+                    user.State = address[1].ToString().Trim(ss);
+                    user.Country = address[2].ToString().Trim(ss);
+
+                    string agess = values[2].ToString().Trim(ss);
+
+                    if (agess != null && agess[0] >= '1' && agess[0] <= '9')
+                    {
+                        user.Age = int.Parse(values[2].ToString().Trim(ss));
+
+                        count++;
+                        users.Add(user);
+                    }
+
                 }
-                bookDetails.User.Add(user);
+                
             }
 
+            return users;
         }
 
-        private void LoadBookUserRating(BookDetails bookDetails)
+        private List<BookUserRating> LoadBookUserRating()
         {
+            char[] ss = new char[2];
+            ss[0] = '\\';
+            ss[1] = '"';
+
             BookUserRating bookUserRating = null;
-            using (var reader = new StreamReader(@"C:\Users\kitra\source\repos\Kartik-Kumar\AI-Recommendation-Case-Study\Data\BX-Book-Ratings.csv"))
+
+            List<BookUserRating> bookUserRatings = new List<BookUserRating>();
+
+            using (var reader = new StreamReader(@"BXBookRatings.csv"))
             {
                 bookUserRating = new BookUserRating();
-                while (!reader.EndOfStream)
+                reader.ReadLine();
+
+                int count = 0;
+
+                while (!reader.EndOfStream && count < 3000)
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(';');
-                    bookUserRating.UserID.UserID= int.Parse(values[0]);
-                    bookUserRating.ISBN.ISBN = values[1];
-                    bookUserRating.Rating = int.Parse(values[2]);
+                    bookUserRating.User.UserID= int.Parse(values[0].ToString().Trim(ss));
+                    bookUserRating.Book.ISBN = values[1].ToString().Trim(ss);
+                    bookUserRating.Rating = int.Parse(values[2].ToString().Trim(ss));
+
+                    bookUserRatings.Add(bookUserRating);
+
+                    count++;
                 }
-                bookDetails.BookUserRatings.Add(bookUserRating);
+                
             }
+            return bookUserRatings;
         }
 
-        private void LoadBooks(BookDetails bookDetails)
+        private List<Book> LoadBooks()
         {
             Book book = null;
-            using (var reader = new StreamReader(@"C:\Users\kitra\source\repos\Kartik-Kumar\AI-Recommendation-Case-Study\Data\BX-Books.csv"))
+            List<Book> books = new List<Book>(); 
+
+            using (var reader = new StreamReader(@"BXBooks.csv"))
             {
+                char[] ss = new char[2];
+                ss[0] = '\\';
+                ss[1] = '"';
+
                 book = new Book();
-                while (!reader.EndOfStream)
+                reader.ReadLine();
+
+                int data = 0;
+
+                while (!reader.EndOfStream && data < 3000)
                 {
+
                     var line = reader.ReadLine();
                     var values = line.Split(';');
-                    book.ISBN = values[0];
-                    book.BookTitle = values[1];
-                    book.BookAuthor = values[2];
-                    book.YearOfPublication = int.Parse(values[3]);
-                    book.Publisher = values[4];
-                    book.ImageURLL = values[5];
-                    book.ImageURLM = values[6];
-                    book.ImageURLS =  values[7];
+
+                    book.ISBN = values[0].ToString().Trim(ss);
+                    book.BookTitle = values[1].ToString().Trim(ss);
+                    book.BookAuthor = values[2].ToString().Trim(ss);
+                    
+                    string temp = values[3].ToString().Trim(ss);
+                    Console.WriteLine(temp);
+                    
+                    if (temp[0] >= '1' && temp[0] <= '9')
+                    {
+                        book.YearOfPublication = Int32.Parse(temp);
+                        book.Publisher = values[4].ToString().Trim(ss);
+                        book.ImageURLL = values[5].ToString().Trim(ss);
+                        book.ImageURLM = values[6].ToString().Trim(ss);
+                        book.ImageURLS = values[7].ToString().Trim(ss);
+
+                        data++;
+                        books.Add(book);
+                    }
                 }
-                bookDetails.Books.Add(book); 
+
+                return books;
             }
 
         }

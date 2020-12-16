@@ -1,6 +1,7 @@
 ﻿using BookUserRatingLib;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +12,19 @@ namespace DataLoadingOfBook
     {
         public BookDetails Load()
         {
-           
+            BookDetails bookDetails = new BookDetails();
+            bookDetails.BookUserRatings = GetAllBooksRatedByUser();
+            bookDetails.Books = GetAllBooks();
+            bookDetails.User = GetAllUsers();
+
+            return bookDetails;
         }
 
-        public List<BXBook> GetAllBooks()
+        public List<Book> GetAllBooks()
         {
-            List<BXBook> bookList = new List<BXBook>();
+            List<Book> bookList = new List<Book>();
             string query = "Select * from BXBooks";
-            IDbConnection conn = ForConnection.GetConnection();
+            IDbConnection conn = GetConnection.MadeConnection();
             using (conn)
             {
                 conn.Open();
@@ -28,7 +34,7 @@ namespace DataLoadingOfBook
                 IDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    BXBook t = new BXBook();
+                    Book t = new Book();
                     t.ISBN = reader[0].ToString();
                     t.BookTitle = reader[1].ToString();
                     t.BookAuthor = reader[2].ToString();
@@ -46,11 +52,11 @@ namespace DataLoadingOfBook
             return bookList;
         }
 
-        public List<BXBookRating> GetAllBooksRatedByUser(int id)
+        public List<BookUserRating> GetAllBooksRatedByUser()
         {
-            List<BXBookRating> bookRatingList = new List<BXBookRating>();
-            string query = $"Select * from BXBookRatings where Userid = {id}";
-            IDbConnection conn = ForConnection.GetConnection();
+            List<BookUserRating> bookRatingList = new List<BookUserRating>();
+            string query = $"Select * from BXBookRatings";
+            IDbConnection conn = GetConnection.MadeConnection();
             using (conn)
             {
                 conn.Open();
@@ -60,10 +66,10 @@ namespace DataLoadingOfBook
                 IDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    BXBookRating t = new BXBookRating();
-                    t.Userid = (int)reader[0];
-                    t.ISBN = reader[1].ToString();
-                    t.BookRating = (int)reader[2];
+                    BookUserRating t = new BookUserRating();
+                    t.User.UserID = (int)reader[0];
+                    t.Book.ISBN = reader[1].ToString();
+                    t.Rating = (int)reader[2];
                     bookRatingList.Add(t);
                 }
 
@@ -71,11 +77,11 @@ namespace DataLoadingOfBook
             return bookRatingList;
         }
 
-        public List<BXUser> GetAllUsers()
+        public List<User> GetAllUsers()
         {
-            List<BXUser> userList = new List<BXUser>();
+            List<User> userList = new List<User>();
             string query = "select * from BXUsers";
-            IDbConnection conn = ForConnection.GetConnection();
+            IDbConnection conn = GetConnection.MadeConnection();
             using (conn)
             {
                 conn.Open();
@@ -86,21 +92,26 @@ namespace DataLoadingOfBook
                 IDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    BXUser t = new BXUser();
+                    User t = new User();
                     t.UserID = (int)reader[0];
-                    t.Location = reader[1].ToString();
+                    var address = reader[1].ToString().Split(',');
+                    t.City = address[0];
+                    t.State = address[1];
+                    t.Country = address[2];
                     t.Age = reader[2].ToString().Equals("") ? 0 : (int)reader[2];
-                    userList.Add(t);
+
+                    if(t.Age != 0)
+                        userList.Add(t);
                 }
             }
             return userList;
         }
 
-        public List<BXBookRating> GetTopRatedBooks()
+        public List<BookUserRating> GetTopRatedBooks()
         {
-            List<BXBookRating> bookRatingList = new List<BXBookRating>();
+            List<BookUserRating> bookRatingList = new List<BookUserRating>();
             string query = " Select * from BXBookRatings where Bookrating>=9 order by BookRating desc";
-            IDbConnection conn = ForConnection.GetConnection();
+            IDbConnection conn = GetConnection.MadeConnection();
             using (conn)
             {
                 conn.Open();
@@ -109,10 +120,10 @@ namespace DataLoadingOfBook
                 IDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    BXBookRating t = new BXBookRating();
-                    t.Userid = (int)reader[0];
-                    t.ISBN = reader[1].ToString();
-                    t.BookRating = (int)reader[2];
+                    BookUserRating t = new BookUserRating();
+                    t.User.UserID = Int32.Parse(reader[0].ToString());
+                    t.Book.ISBN = reader[1].ToString();
+                    t.Rating = Int32.Parse(reader[2].ToString());
                     bookRatingList.Add(t);
 
                 }

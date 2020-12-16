@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A9565045-6F23-4A66-AEC2-5F45DEFE6374}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AIRecommendationApp.PearsonEngine</RootNamespace>
-    <AssemblyName>AIRecommendationApp.PearsonEngine</AssemblyName>
+    <ProjectGuid>{77713173-B33E-40B4-A114-630A2676CE1C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AIRecommendationApp</RootNamespace>
+    <AssemblyName>AIRecommendationApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,13 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MathNet.Numerics, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.4.12.0\lib\net461\MathNet.Numerics.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,20 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRatingsAggrigator.cs" />
-    <Compile Include="IRecommendationEngine.cs" />
-    <Compile Include="MathNetPearsonRecommendationEngine.cs" />
-    <Compile Include="PesrsonRecommendationEngine.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RatingAggrigator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AIRecommendationApp.PearsonEngine\AIRecommendationApp.PearsonEngine.csproj">
+      <Project>{a9565045-6f23-4a66-aec2-5f45defe6374}</Project>
+      <Name>AIRecommendationApp.PearsonEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Books\BookUserRatingLib.csproj">
       <Project>{1f6db2b7-7a7d-47b1-8cf1-17adb6ec0eea}</Project>
       <Name>BookUserRatingLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLoadingOfBook\DataLoadingOfBook.csproj">
+      <Project>{5cd05a67-5bdc-4e31-ae83-d8ee334857c4}</Project>
+      <Name>DataLoadingOfBook</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
