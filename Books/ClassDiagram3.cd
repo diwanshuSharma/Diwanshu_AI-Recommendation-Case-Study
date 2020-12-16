@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BookUserRatingLib.Book">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <AssociationLine Name="BookRatings" Type="System.Collections.Generic.List&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="2.375" />
+        <Point X="5.242" Y="2.375" />
+        <Point X="5.242" Y="3.562" />
+        <Point X="6.062" Y="3.562" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.079" Y="0.102" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAADAAAAAAAAAAAQgAAAAIAAIAAAAA=</HashCode>
+      <FileName>Book.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BookRatings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BookUserRatingLib.BookDetails">
+    <Position X="9.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAABAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BookDetails.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Books" />
+      <Property Name="BookUserRatings" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BookUserRatingLib.BookUserRating">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>BookUserRating.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UserID" />
+      <Property Name="ISBN" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BookUserRatingLib.User">
+    <Position X="3" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAEAAAAgAAAAAAgACAAAABAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BookRatings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="System.Collections.Generic.List&lt;T&gt;" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
