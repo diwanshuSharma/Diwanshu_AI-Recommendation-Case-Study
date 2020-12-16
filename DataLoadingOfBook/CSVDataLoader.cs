@@ -8,15 +8,33 @@ using System.Threading.Tasks;
 
 namespace DataLoadingOfBook
 {
+    
     public class CSVDataLoader : IDataLoader
     {
+        static double MAX = 99999;
         public BookDetails Load()
         {
             BookDetails bookDetails = new BookDetails();
 
-            bookDetails.Books = LoadBooks();
-            bookDetails.BookUserRatings = LoadBookUserRating();
-            bookDetails.User = LoadUser();
+            Task taskBook = new Task(() => {
+                bookDetails.Books = LoadBooks();
+            });
+
+            Task taskRating = new Task(() => {
+                bookDetails.BookUserRatings = LoadBookUserRating();
+            });
+
+            Task taskUser = new Task(() => {
+                bookDetails.User = LoadUser();
+            });
+
+            taskBook.Start();
+            taskRating.Start();
+            taskUser.Start();
+
+            taskBook.Wait();
+            taskRating.Wait();
+            taskUser.Wait();
 
             return bookDetails;
         }
@@ -25,37 +43,53 @@ namespace DataLoadingOfBook
         {
             User user = null;
 
-            char[] ss = new char[2];
+            char[] ss = new char[3];
             ss[0] = '\\';
             ss[1] = '"';
+            ss[2] = ' ';
 
             List<User> users = new List<User>();
 
             using (var reader = new StreamReader(@"BXUsers.csv"))
             {
-                user = new User();
                 reader.ReadLine();
 
-                int count = 0;
+                double count = 0;
 
-                while (!reader.EndOfStream && count < 3000)
+                while (!reader.EndOfStream && count < MAX)
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(';');
-                    user.UserID = int.Parse(values[0].ToString().Trim(ss));
-                    var address = values[1].Split(',');
-                    user.City = address[0].ToString().Trim(ss);
-                    user.State = address[1].ToString().Trim(ss);
-                    user.Country = address[2].ToString().Trim(ss);
-
-                    string agess = values[2].ToString().Trim(ss);
-
-                    if (agess != null && agess[0] >= '1' && agess[0] <= '9')
+                    try
                     {
-                        user.Age = int.Parse(values[2].ToString().Trim(ss));
+                        user = new User();
+                        var line = reader.ReadLine();
+                        var values = line.Split(';');
+                        user.UserID = int.Parse(values[0].ToString().Trim(ss));
+                        var address = values[1].Split(',');
+                        user.City = address[0].ToString().Trim(ss);
 
-                        count++;
-                        users.Add(user);
+                        if (address[1] != "" && address[1] != null)
+                            user.State = address[1].ToString().Trim(ss);
+                        else
+                            continue;
+
+                        if (address[2] != "" && address[2] != null)
+                            user.Country = address[2].ToString().Trim(ss);
+                        else
+                            continue;
+
+                        string agess = values[2].ToString().Trim(ss);
+
+                        if (agess != null && agess[0] >= '1' && agess[0] <= '9')
+                        {
+                            user.Age = int.Parse(values[2].ToString().Trim(ss));
+
+                            count++;
+                            users.Add(user);
+                        }
+                    }
+                    catch(Exception)
+                    {
+
                     }
 
                 }
@@ -77,22 +111,30 @@ namespace DataLoadingOfBook
 
             using (var reader = new StreamReader(@"BXBookRatings.csv"))
             {
-                bookUserRating = new BookUserRating();
+              
                 reader.ReadLine();
 
-                int count = 0;
+                double count = 0;
 
-                while (!reader.EndOfStream && count < 3000)
+                while (!reader.EndOfStream && count < MAX)
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(';');
-                    bookUserRating.User.UserID= int.Parse(values[0].ToString().Trim(ss));
-                    bookUserRating.Book.ISBN = values[1].ToString().Trim(ss);
-                    bookUserRating.Rating = int.Parse(values[2].ToString().Trim(ss));
+                    try
+                    {
+                        bookUserRating = new BookUserRating();
+                        var line = reader.ReadLine();
+                        var values = line.Split(';');
+                        bookUserRating.User.UserID = int.Parse(values[0].ToString().Trim(ss));
+                        bookUserRating.Book.ISBN = values[1].ToString().Trim(ss);
+                        bookUserRating.Rating = int.Parse(values[2].ToString().Trim(ss));
 
-                    bookUserRatings.Add(bookUserRating);
+                        bookUserRatings.Add(bookUserRating);
 
-                    count++;
+                        count++;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
                 
             }
@@ -110,34 +152,41 @@ namespace DataLoadingOfBook
                 ss[0] = '\\';
                 ss[1] = '"';
 
-                book = new Book();
+                
                 reader.ReadLine();
 
-                int data = 0;
+                double count = 0;
 
-                while (!reader.EndOfStream && data < 3000)
+                while (!reader.EndOfStream && count < MAX)
                 {
-
-                    var line = reader.ReadLine();
-                    var values = line.Split(';');
-
-                    book.ISBN = values[0].ToString().Trim(ss);
-                    book.BookTitle = values[1].ToString().Trim(ss);
-                    book.BookAuthor = values[2].ToString().Trim(ss);
-                    
-                    string temp = values[3].ToString().Trim(ss);
-                    Console.WriteLine(temp);
-                    
-                    if (temp[0] >= '1' && temp[0] <= '9')
+                    try
                     {
-                        book.YearOfPublication = Int32.Parse(temp);
-                        book.Publisher = values[4].ToString().Trim(ss);
-                        book.ImageURLL = values[5].ToString().Trim(ss);
-                        book.ImageURLM = values[6].ToString().Trim(ss);
-                        book.ImageURLS = values[7].ToString().Trim(ss);
+                        book = new Book();
+                        var line = reader.ReadLine();
+                        var values = line.Split(';');
 
-                        data++;
-                        books.Add(book);
+                        book.ISBN = values[0].ToString().Trim(ss);
+                        book.BookTitle = values[1].ToString().Trim(ss);
+                        book.BookAuthor = values[2].ToString().Trim(ss);
+
+                        string temp = values[3].ToString().Trim(ss);
+                        //Console.WriteLine("Print " + temp);
+
+                        if (temp != null && temp != "" && temp[0] >= '1' && temp[0] <= '9')
+                        {
+                            book.YearOfPublication = Int32.Parse(temp);
+                            book.Publisher = values[4].ToString().Trim(ss);
+                            book.ImageURLL = values[5].ToString().Trim(ss);
+                            book.ImageURLM = values[6].ToString().Trim(ss);
+                            book.ImageURLS = values[7].ToString().Trim(ss);
+
+                            count++;
+                            books.Add(book);
+                        }
+                    }
+                    catch (Exception)
+                    {
+
                     }
                 }
 

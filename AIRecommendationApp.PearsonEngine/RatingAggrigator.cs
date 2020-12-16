@@ -14,6 +14,8 @@ namespace AIRecommendationApp.PearsonEngine
         public Dictionary<string, List<int>> Aggrigate(BookDetails bookDetails, Preferance preferance)
         {
 
+            Console.WriteLine("Inside Aggrigate");
+
             List<User> users = bookDetails.User;
 
             Dictionary<string, List<int>> Aggrigate = new Dictionary<string, List<int>>();
@@ -24,16 +26,22 @@ namespace AIRecommendationApp.PearsonEngine
 
             int index = 0;
 
-            foreach (var user in users)
-            {
-                if(user.State.Equals(preferance.state) && targetAgeGroup == FindAgeGroup(user.Age))
-                {
-                    Console.WriteLine("--------------- Found --------------------- ");
-                    Aggrigate[preferance.ISBN].AddRange(Returnrating(user.UserID, bookDetails.BookUserRatings));
-                }
+            Parallel.ForEach(users, user =>
+           {
+               if (user.State.Equals(preferance.state) && targetAgeGroup == FindAgeGroup(user.Age))
+               {
+                   //Console.WriteLine("--------------- Found --------------------- ");
+                   List<int> ratings = Returnrating(user.UserID, bookDetails.BookUserRatings);
 
-                index++;
-            }
+                   Parallel.ForEach(ratings, item =>
+                    {
+                        Aggrigate[preferance.ISBN].Add(item);
+                        //Console.WriteLine(Aggrigate[preferance.ISBN].Count);
+                    });
+
+                   index++;
+               }
+           });
 
             return Aggrigate;
         }
@@ -44,7 +52,7 @@ namespace AIRecommendationApp.PearsonEngine
 
             foreach (var item in bookUserRatings)
             {
-                if (item.User.UserID == UserID)
+                if (item.User.UserID == UserID && item.Rating != 0)
                     ratings.Add(item.Rating);
             }
 

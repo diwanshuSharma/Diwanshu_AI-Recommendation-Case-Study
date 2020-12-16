@@ -13,10 +13,23 @@ namespace DataLoadingOfBook
         public BookDetails Load()
         {
             BookDetails bookDetails = new BookDetails();
-            bookDetails.BookUserRatings = GetAllBooksRatedByUser();
-            bookDetails.Books = GetAllBooks();
-            bookDetails.User = GetAllUsers();
 
+            Task taskBook = new Task(() => {
+                bookDetails.Books = GetAllBooks(); 
+            });
+
+            Task taskRating = new Task(() => {
+                bookDetails.BookUserRatings = GetAllBooksRatedByUser();
+            });
+
+            Task taskUser = new Task(() => {
+                bookDetails.User = GetAllUsers();
+            });
+
+            taskBook.Start();
+            taskRating.Start();
+            taskUser.Start();
+            
             return bookDetails;
         }
 
