@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Test", "Unit Test", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIRecommendationApp.PearsonEngine", "AIRecommendationApp.PearsonEngine\AIRecommendationApp.PearsonEngine.csproj", "{A9565045-6F23-4A66-AEC2-5F45DEFE6374}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIRecommendationApp.UnitTest", "AIRecommendationApp.UnitTest\AIRecommendationApp.UnitTest.csproj", "{3181ADEF-D419-442E-B015-52F85AAD911D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A9565045-6F23-4A66-AEC2-5F45DEFE6374}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9565045-6F23-4A66-AEC2-5F45DEFE6374}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9565045-6F23-4A66-AEC2-5F45DEFE6374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3181ADEF-D419-442E-B015-52F85AAD911D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3181ADEF-D419-442E-B015-52F85AAD911D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3181ADEF-D419-442E-B015-52F85AAD911D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3181ADEF-D419-442E-B015-52F85AAD911D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +44,7 @@ Global
 		{7E4B15BB-88FB-45E7-BD0A-B56F36B39897} = {C3CC8A64-79F9-4067-B69F-7AAD6A929312}
 		{6AB6534A-E487-488C-971F-164D13F6172D} = {C3CC8A64-79F9-4067-B69F-7AAD6A929312}
 		{A9565045-6F23-4A66-AEC2-5F45DEFE6374} = {A216432D-AF91-423E-9172-4319506296C0}
+		{3181ADEF-D419-442E-B015-52F85AAD911D} = {6AB6534A-E487-488C-971F-164D13F6172D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F53199F7-BDC2-462E-AB9D-795214B97C2E}

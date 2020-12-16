@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRecommendationEngine.cs" />
-    <Compile Include="PesrsonRecommendation.cs" />
+    <Compile Include="PesrsonRecommendationEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

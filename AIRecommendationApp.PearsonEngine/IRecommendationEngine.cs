@@ -8,6 +8,6 @@ namespace AIRecommendationApp.PearsonEngine
 {
     public interface IRecommendationEngine
     {
-        double GetCorellation(int[] a1, int[] a2);
+        double GetCorrelation(List<int> baselist, List<int> otherlist);
     }
 }
