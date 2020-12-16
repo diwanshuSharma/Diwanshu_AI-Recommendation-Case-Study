@@ -12,7 +12,7 @@ namespace BookUserRatingLib
         public int Age { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string country { get; set; }
+        public string Country { get; set; }
 
         List<BookUserRating> BookRatings { get; set; } = new List<BookUserRating>();
     }

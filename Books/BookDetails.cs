@@ -9,3 +9,4 @@ namespace BookUserRatingLib
         public List<User> User { get; set; } = new List<User>();
     }
 }
+    
