@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AI Recommendation Case Study", "AI Recommendation Case Study", "{C3CC8A64-79F9-4067-B69F-7AAD6A929312}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Layer", "Business Layer", "{A216432D-AF91-423E-9172-4319506296C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common Layer", "Common Layer", "{558C0017-1910-4033-8784-796F25115D63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access Layer", "Data Access Layer", "{D001A4E4-13C4-43DD-B2B6-A327C0B31DF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation Layer", "Presentation Layer", "{7E4B15BB-88FB-45E7-BD0A-B56F36B39897}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Test", "Unit Test", "{6AB6534A-E487-488C-971F-164D13F6172D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIRecommendationApp.PearsonEngine", "AIRecommendationApp.PearsonEngine\AIRecommendationApp.PearsonEngine.csproj", "{A9565045-6F23-4A66-AEC2-5F45DEFE6374}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9565045-6F23-4A66-AEC2-5F45DEFE6374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9565045-6F23-4A66-AEC2-5F45DEFE6374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9565045-6F23-4A66-AEC2-5F45DEFE6374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9565045-6F23-4A66-AEC2-5F45DEFE6374}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A216432D-AF91-423E-9172-4319506296C0} = {C3CC8A64-79F9-4067-B69F-7AAD6A929312}
+		{558C0017-1910-4033-8784-796F25115D63} = {C3CC8A64-79F9-4067-B69F-7AAD6A929312}
+		{D001A4E4-13C4-43DD-B2B6-A327C0B31DF4} = {C3CC8A64-79F9-4067-B69F-7AAD6A929312}
+		{7E4B15BB-88FB-45E7-BD0A-B56F36B39897} = {C3CC8A64-79F9-4067-B69F-7AAD6A929312}
+		{6AB6534A-E487-488C-971F-164D13F6172D} = {C3CC8A64-79F9-4067-B69F-7AAD6A929312}
+		{A9565045-6F23-4A66-AEC2-5F45DEFE6374} = {A216432D-AF91-423E-9172-4319506296C0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F53199F7-BDC2-462E-AB9D-795214B97C2E}
+	EndGlobalSection
+EndGlobal
