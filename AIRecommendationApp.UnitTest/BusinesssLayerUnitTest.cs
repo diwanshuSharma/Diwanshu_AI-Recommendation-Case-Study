@@ -7,7 +7,7 @@ using AIRecommendationApp.PearsonEngine;
 namespace AIRecommendationApp.UnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class BusinesssLayerUnitTest
     {
         int precision = 2;
         PesrsonRecommendationEngine pe = new PesrsonRecommendationEngine();
