@@ -8,6 +8,7 @@ using BookUserRatingLib;
 using AIRecommendationApp.PearsonEngine;
 using Books;
 using System.Threading;
+using System.Runtime.Caching;
 
 namespace AIRecommendationApp
 {
@@ -21,9 +22,12 @@ namespace AIRecommendationApp
             
             RatingAggrigator ratingAggrigator = new RatingAggrigator();
             Preferance preferance = new Preferance();
+            //preferance.ISBN = "0452282152";
+            //preferance.Age = 16;
+            //preferance.state = "new york";
+            preferance.state = "California";
+            preferance.Age = 10;
             preferance.ISBN = "0452282152";
-            preferance.Age = 16;
-            preferance.state = "new york";
 
             List<Book> books = new List<Book>();
 
@@ -36,7 +40,24 @@ namespace AIRecommendationApp
             task.Start();
             task.Join();
 
-            
+
+            preferance.state = "California";
+            preferance.Age = 10;
+            preferance.ISBN = "0452282152";
+
+            //List<Book> books = new List<Book>();
+
+            AIRecommendationEngine aIRecommendationEngine1 = new AIRecommendationEngine();
+
+            Thread task1 = new Thread(() => {
+                books = aIRecommendationEngine1.Recommend(preferance, 10);
+            });
+
+            task1.Start();
+            task1.Join();
+
+
+
             Console.WriteLine("Relative Books\n");
             foreach (var item in books)
             {

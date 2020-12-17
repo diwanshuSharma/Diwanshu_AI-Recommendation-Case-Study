@@ -42,7 +42,9 @@ namespace AIRecommendationApp.PearsonEngine
                     //list.Add(bookDetails.Ratings.Where(rating => rating.User.UserId == person.UserId).ToDictionary(rating => rating.Book.ISBN, rating => rating.Rating));
                 };
             }
-            list.OrderBy(o => o.Value.OrderBy(x => x));
+
+            // Order By values in dictionary
+            //list.OrderBy(o => o.Value.OrderBy(x => x));
             return list;
 
             /*

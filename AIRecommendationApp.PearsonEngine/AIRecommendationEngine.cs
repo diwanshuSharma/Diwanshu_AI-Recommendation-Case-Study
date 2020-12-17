@@ -22,8 +22,8 @@ public class AIRecommendationEngine
             List<Book> books = new List<Book>();
             Dictionary<string, double> correlations = new Dictionary<string, double>();
 
-            IDataLoader dataLoader = new CSVDataLoader();
-            BookDetails bookDetails = dataLoader.Load();
+            BookDataService bookDataService = new BookDataService();
+            BookDetails bookDetails = bookDataService.GetBookDetails();
 
             IRatingsAggrigator ratingsAggrigator = new RatingAggrigator();
             Dictionary<string, List<int>> keyValuePairs = ratingsAggrigator.Aggrigate(bookDetails, preferece);

@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,9 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AIRecommendationEngine.cs" />
+    <Compile Include="BookDataService.cs" />
+    <Compile Include="IDataCacher.cs" />
     <Compile Include="IRatingsAggrigator.cs" />
     <Compile Include="IRecommendationEngine.cs" />
     <Compile Include="MathNetPearsonRecommendationEngine.cs" />
+    <Compile Include="MemDataCacher.cs" />
     <Compile Include="PesrsonRecommendationEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingAggrigator.cs" />
