@@ -18,7 +18,7 @@ namespace AIRecommendationApp.PearsonEngine
 
             if(data == null)
             {
-                Console.WriteLine("Data Stored into Cache");
+                Console.WriteLine("--------------- Data Stored into Cache --------------");
                 IDataLoader dataLoader = new CSVDataLoader();
                 data = dataLoader.Load();
                 memDataCacher.SetData(data);

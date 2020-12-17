@@ -40,21 +40,22 @@ namespace AIRecommendationApp
             task.Start();
             task.Join();
 
+            Preferance preferance1 = new Preferance();
+            preferance1.state = "California";
+            preferance1.Age = 25;
+            preferance1.ISBN = "0452282152";
 
-            preferance.state = "California";
-            preferance.Age = 10;
-            preferance.ISBN = "0452282152";
-
-            //List<Book> books = new List<Book>();
+            List<Book> books1 = new List<Book>();
 
             AIRecommendationEngine aIRecommendationEngine1 = new AIRecommendationEngine();
 
             Thread task1 = new Thread(() => {
-                books = aIRecommendationEngine1.Recommend(preferance, 10);
+                books1 = aIRecommendationEngine1.Recommend(preferance1, 10);
             });
 
             task1.Start();
             task1.Join();
+            
 
 
 
@@ -62,17 +63,16 @@ namespace AIRecommendationApp
             foreach (var item in books)
             {
                 Console.WriteLine(item.BookTitle);
-            }            
+            }
 
-            DBLoading dBLoading = new DBLoading();
-            BookDetails bookDetails1 = dBLoading.Load();
+            //DBLoading dBLoading = new DBLoading();
+            //BookDetails bookDetails1 = dBLoading.Load();
 
-            //ans = ratingAggrigator.Aggrigate(bookDetails1, preferance);
-
-            //for (int i = 0; i < ans["0195153448"].Count; i++)
-            //{
-            //    Console.WriteLine(ans["0195153448"][0]);
-            //}
+            Console.WriteLine("Relative Books\n");
+            foreach (var item in books1)
+            {
+                Console.WriteLine(item.BookTitle);
+            }
 
             Console.WriteLine("done !!");
             Console.ReadLine();
