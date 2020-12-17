@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIRecommendationEngine.cs" />
     <Compile Include="IRatingsAggrigator.cs" />
     <Compile Include="IRecommendationEngine.cs" />
     <Compile Include="MathNetPearsonRecommendationEngine.cs" />
@@ -60,6 +61,10 @@
     <ProjectReference Include="..\Books\BookUserRatingLib.csproj">
       <Project>{1f6db2b7-7a7d-47b1-8cf1-17adb6ec0eea}</Project>
       <Name>BookUserRatingLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLoadingOfBook\DataLoadingOfBook.csproj">
+      <Project>{5cd05a67-5bdc-4e31-ae83-d8ee334857c4}</Project>
+      <Name>DataLoadingOfBook</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

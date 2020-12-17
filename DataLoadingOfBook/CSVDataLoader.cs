@@ -50,7 +50,7 @@ namespace DataLoadingOfBook
 
             List<User> users = new List<User>();
 
-            using (var reader = new StreamReader(@"BXUsers.csv"))
+            using (var reader = new StreamReader(@"BX-Users.csv"))
             {
                 reader.ReadLine();
 
@@ -109,7 +109,7 @@ namespace DataLoadingOfBook
 
             List<BookUserRating> bookUserRatings = new List<BookUserRating>();
 
-            using (var reader = new StreamReader(@"BXBookRatings.csv"))
+            using (var reader = new StreamReader(@"BX-Book-Ratings.csv"))
             {
               
                 reader.ReadLine();
@@ -146,7 +146,7 @@ namespace DataLoadingOfBook
             Book book = null;
             List<Book> books = new List<Book>(); 
 
-            using (var reader = new StreamReader(@"BXBooks.csv"))
+            using (var reader = new StreamReader(@"BX-Books.csv"))
             {
                 char[] ss = new char[2];
                 ss[0] = '\\';

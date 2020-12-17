@@ -18,32 +18,30 @@ namespace AIRecommendationApp
 
             Console.ReadLine();
 
-            CSVDataLoader cSVDataLoader = new CSVDataLoader();
-            BookDetails bookDetails = cSVDataLoader.Load();
-
-            Console.WriteLine(bookDetails);
-
+            
             RatingAggrigator ratingAggrigator = new RatingAggrigator();
             Preferance preferance = new Preferance();
-            preferance.ISBN = "0195153448";
-            preferance.Age = 32;
-            preferance.state = "california";
+            preferance.ISBN = "0452282152";
+            preferance.Age = 16;
+            preferance.state = "new york";
 
-            Dictionary<string, List<int>> ans = new Dictionary<string, List<int>>();
+            List<Book> books = new List<Book>();
+
+            AIRecommendationEngine aIRecommendationEngine = new AIRecommendationEngine();
 
             Thread task = new Thread(() => {
-                ans = ratingAggrigator.Aggrigate(bookDetails, preferance);
+                books = aIRecommendationEngine.Recommend(preferance, 10);
             });
             
             task.Start();
             task.Join();
 
-            Console.WriteLine("Relative Ratings\n");
-            for (int i = 0; i < ans[preferance.ISBN].Count; i++)
+            
+            Console.WriteLine("Relative Books\n");
+            foreach (var item in books)
             {
-                Console.WriteLine(ans["0195153448"][i]);
-            }
-
+                Console.WriteLine(item.BookTitle);
+            }            
 
             DBLoading dBLoading = new DBLoading();
             BookDetails bookDetails1 = dBLoading.Load();
